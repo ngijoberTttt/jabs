@@ -5,9 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Birthday Greetings</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600&display=swap'); /* Aesthetic fonts */
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #fff0f0; /* Light red background */
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffdde1, #fff0f0); /* Festive gradient background */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -24,6 +26,7 @@
             text-align: center;
             border: 2px solid #e0e0e0;
             position: relative;
+            animation: fadeIn 1s ease-in-out; /* Animation */
         }
         h2 {
             margin-bottom: 20px;
@@ -31,36 +34,75 @@
             color: #d32f2f; /* Red text color */
             font-weight: 700;
         }
-        p {
-            font-size: 20px;
-            color: #b71c1c; /* Darker red text */
-            margin-bottom: 20px;
-        }
         .see-more-btn {
-            background-color: #d32f2f; /* Red button */
+            background: linear-gradient(135deg, #ff6f61, #d32f2f); /* Gradient button */
             color: white;
-            padding: 12px 24px;
+            padding: 14px 28px;
             font-size: 18px;
+            font-family: 'Poppins', sans-serif;
             font-weight: bold;
             border: none;
-            border-radius: 30px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 8px 16px rgba(211, 47, 47, 0.3);
+        }
+        .see-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            transform: scale(0);
+            transition: transform 0.3s ease-in-out;
         }
         .see-more-btn:hover {
-            transform: scale(1.1);
-            background-color: #b71c1c; /* Darker red when hovered */
+            transform: translateY(-3px);
+            box-shadow: 0 12px 24px rgba(211, 47, 47, 0.5);
+        }
+        .see-more-btn:hover::before {
+            transform: scale(2);
         }
         .see-more-btn:active {
-            transform: scale(0.95);
+            transform: translateY(1px);
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 400px) {
+            .form-container {
+                width: 90%;
+                padding: 20px;
+            }
+            .see-more-btn {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+            h2 {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="form-container">
-        <h2>happy birthday! (or intro message)</h2>
-        <p>(name)🎈</p>
+        <h2>happy birthday boi</h2>
         <button class="see-more-btn" onclick="location.href='see-more.html';">See More</button>
     </div>
+    <noscript>
+        <p style="color: #d32f2f; text-align: center;">Please enable JavaScript to view the interactive greeting.</p>
+    </noscript>
 </body>
 </html>

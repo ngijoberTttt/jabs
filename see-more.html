@@ -14,6 +14,7 @@
             height: 100vh;
             margin: 0;
             color: #333;
+            position: relative; /* For positioning watermark */
         }
 
         .form-container {
@@ -21,7 +22,8 @@
             padding: 40px;
             border-radius: 15px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-            width: 380px;
+            width: 90%;
+            max-width: 400px;
             text-align: center;
             border: 1px solid #f0e6e6;
             position: relative;
@@ -30,7 +32,7 @@
         }
 
         h2 {
-            margin-bottom: 25px;
+            margin-bottom: 15px;
             font-size: 30px;
             color: #e57373; /* Soft red */
             font-weight: 700;
@@ -39,16 +41,14 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
 
-        /* Aesthetic text styles */
         .message-container {
-            max-height: 300px; /* Adjust height to fit the message container */
-            overflow-y: auto; /* Enable vertical scrolling */
-            padding-right: 10px;
+            height: 200px; /* Fixed height */
+            overflow-y: auto;
             text-align: left;
             font-size: 18px;
             line-height: 1.8;
             font-weight: 400;
-            color: #e57373; /* Soft red */
+            color: #e57373;
             font-family: 'Georgia', serif;
             letter-spacing: 0.5px;
             padding: 20px;
@@ -56,112 +56,172 @@
             background: #fff9f9;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             transition: background-color 0.3s ease;
+            margin-bottom: 20px;
         }
 
         .message-container:hover {
-            background-color: #fdf1f1; /* Slight background change on hover */
+            background-color: #fdf1f1;
         }
 
-        .message-container p {
-            margin-bottom: 15px;
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
-        .message-container p:last-child {
-            margin-bottom: 0;
-        }
-
-        .go-back-btn {
-            background-color: #e57373;
-            margin-top: 10px;
-            color: white;
-            padding: 12px 24px;
-            font-size: 18px;
+        .control-btn {
+            border: 2px solid #e57373; /* Soft red border */
+            background: transparent;
+            color: #e57373;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-family: 'Poppins', sans-serif;
             font-weight: bold;
-            border: none;
-            border-radius: 30px;
             cursor: pointer;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: color 0.3s ease, transform 0.2s ease;
         }
 
-        .go-back-btn:hover {
-            transform: scale(1.1);
-            background-color: #ef5350; /* Slightly darker red */
+        .control-btn:hover {
+            color: #fff; /* Change text color on hover */
+            background-color: #e57373; /* Fill background */
         }
 
-        .go-back-btn:active {
-            transform: scale(0.95);
+        .control-btn:active {
+            transform: scale(0.95); /* Slight scaling on click */
+            background-color: transparent !important; /* No background */
+            color: #e57373 !important; /* Keep original text color */
         }
 
-        /* Scrolling landscape image container */
         .scrolling-image-container {
             position: relative;
             width: 100%;
-            height: 250px;
+            height: 250px; /* Adjusted height for visibility */
             overflow: hidden;
-            margin-top: 10px;
-            margin-bottom: 30px;
             border-radius: 12px;
+            margin-bottom: 30px;
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
 
         .scrolling-images {
             display: flex;
-            width: 300%; /* Three images should take up three times the width of the container */
-            animation: scrollImage 10s linear infinite;
+            width: calc(100% * 5); /* Total width = 5 images */
+            animation: scrollImage 25s linear infinite; /* 5s per image */
         }
 
         .scrolling-image {
-            width: 60%; /* Each image will take up 1/3 of the container's width */
+            width: 100%;
             height: 100%;
             object-fit: cover;
-            border-radius: 12px;
-        }
-
-        .scrolling-images::after {
-            content: "";
-            width: 33.333%;
-            height: 100%;
-            object-fit: cover;
-            background-image: url('images/2.jpg'); /* Duplicate the first image */
-            background-size: cover;
-            border-radius: 12px;
+            flex-shrink: 0;
         }
 
         @keyframes scrollImage {
-            from {
+            0% {
                 transform: translateX(0);
             }
-            to {
-                transform: translateX(-150%); /* Shift the container left by one image */
+            20% {
+                transform: translateX(0); /* Hold the first image for 20% of the time */
             }
+            40% {
+                transform: translateX(-100%); /* Scroll to the second image */
+            }
+            60% {
+                transform: translateX(-200%); /* Scroll to the third image */
+            }
+            80% {
+                transform: translateX(-300%); /* Scroll to the fourth image */
+            }
+            100% {
+                transform: translateX(-400%); /* Scroll to the fifth image */
+            }
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .social-icons a {
+            color: #e57373;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: #333;
         }
     </style>
 </head>
 <body>
-    <!-- Main content container -->
     <div class="form-container">
-        <!-- Scrolling Landscape Images inside the form-container -->
         <div class="scrolling-image-container">
             <div class="scrolling-images">
-                <img src="images/2.jpg" alt="Landscape 1" class="scrolling-image">
-                <img src="images/4.jpg" alt="Landscape 2" class="scrolling-image">
-                <img src="images/5.jpg" alt="Landscape 3" class="scrolling-image">
+                <img src="images/1.jpg" alt="Image 1" class="scrolling-image">
+                <img src="images/2.jpg" alt="Image 2" class="scrolling-image">
+                <img src="images/3.jpg" alt="Image 3" class="scrolling-image">
+                <img src="images/4.jpg" alt="Image 4" class="scrolling-image">
+                <img src="images/5.jpg" alt="Image 5" class="scrolling-image">
             </div>
         </div>
 
-        <div class="message-container">
-            <p>Happy Birthday!<br>
-            On this special day, I just want to remind you how much you mean to those around you. Your kindness, strength, and unwavering love inspire everyone lucky enough to know you. Today is a celebration of not just another year of your life, but of the beautiful soul that you are, and all the wonderful memories you've created along the way.</p>
+        <h2>Birthday Wishes</h2>
 
-            <p>May this year bring you joy that fills your heart, laughter that brightens your days, and peace that surrounds your every step. As you continue your journey, remember that the world is better with you in it, and there are still countless amazing things awaiting you.</p>
-
-            <p>Thank you for being you—unapologetically, beautifully, and powerfully. Here's to more adventures, more love, and more dreams coming true. You deserve all the happiness this world can offer.</p>
-
-            <p>Cheers to you and the incredible year ahead!</p>
+        <div class="message-container" id="dynamicMessage">
+            <!-- Initial message -->
         </div>
 
-        <button class="go-back-btn" onclick="location.href='jabs.html';">Go Back</button>
+        <div class="controls">
+            <button class="control-btn" onclick="prevMessage()">Previous</button>
+            <button class="control-btn" onclick="nextMessage()">Next</button>
+        </div>
+
+        <div class="social-icons">
+    <span style="font-size: 14px; color: #555; font-weight: bold; margin-right: 10px;">Follow me:</span>
+    <a href="https://t.me/@jbrtttttt" target="_blank">Telegram</a>
+    <a href="https://www.instagram.com/_spuhnjbaab/profilecard/?igsh=MTE0N2l5d3hib3h0bA==" target="_blank">Instagram</a>
+</div>
     </div>
+
+    <script>
+        const messages = [
+            "First of many, happy happy birthday boi!! Those pics pala sa taas are my fav pics of you HAHAHAHA",
+            "So imma start na, I may not tell you this even at some times but I'm really proud of what you've become.",
+            "I can really say na you really grow as a person because I see it for the last 10 months na I'm talking with you, I'm so proud of u.",
+            "Even though there are so many struggles and difficulties that came into your life this year, I want you to know na I'm really proud because u really face it with courage and overcome it.",
+            "I also want u to know na if you feel others don't like you, it's fine! I like you and everybody else does, what matters is somebody still likes you!",
+            "All I wish for you on your birthday is healing and happiness, and may those past won't affect you anymore.",
+            "May this year bring you joy that fills your heart, laughter that brightens your days, and peace that surrounds your every step.",
+            "As you continue your journey, remember that the world is better with you in it, and there are still countless amazing things awaiting you.",
+            "Always remember also na I'm always here, and if in some point we stop talking, don't hesitate to message me if you have problems, I'm always here for you.",
+            "Even though you won't be my end game (for now) char! I will still hold into my promise na no matter what I'm always here kasi you're already embedded in my soul.",
+            "Enjoy your day Sherene and may this upcoming year bring you a lot of happiness and positivity. Happy 17th my <33",
+            "-Andrei"
+        ];
+
+        let index = 0;
+
+        function updateMessage() {
+            const messageContainer = document.getElementById('dynamicMessage');
+            messageContainer.innerText = messages[index];
+        }
+
+        function nextMessage() {
+            index = (index + 1) % messages.length;
+            updateMessage();
+        }
+
+        function prevMessage() {
+            index = (index - 1 + messages.length) % messages.length;
+            updateMessage();
+        }
+
+        updateMessage();
+    </script>
 </body>
 </html>
