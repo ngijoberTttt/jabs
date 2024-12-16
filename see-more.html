@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Birthday Greetings</title>
+    <title>More Birthday Wishes</title>
     <style>
         body {
             font-family: 'Helvetica', sans-serif;
@@ -44,7 +44,7 @@
         .message-container {
             height: 200px; /* Fixed height */
             overflow-y: auto;
-            text-align: center;
+            text-align: left;
             font-size: 18px;
             line-height: 1.8;
             font-weight: 400;
@@ -94,30 +94,39 @@
             color: #e57373 !important; /* Keep original text color */
         }
 
-        .video-container {
+        .scrolling-image-container {
             position: relative;
             width: 100%;
-            height: 250px; /* Adjust height of the video */
+            height: 350px; /* Adjusted height for visibility */
             overflow: hidden;
-            border-radius: 20px; /* Rounded corners */
+            border-radius: 12px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Soft shadow */
-            border: 2px solid transparent; /* Transparent border initially */
-            background-image: linear-gradient(white, white), url('images/1.jpg'); /* Optional: Fallback image */
-            background-origin: border-box;
-            background-clip: content-box, border-box; /* Gradient border effect */
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .video {
+        .scrolling-images {
+            display: flex;
+            width: calc(60% * 2); /* Total width = 2 images */
+            animation: scrollImage 10s linear infinite; /* 5s per image */
+        }
+
+        .scrolling-image {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the video fills the container */
+            object-fit: cover;
+            flex-shrink: 0;
         }
 
-        .video-container:hover {
-            box-shadow: 0 15px 30px rgba(255, 105, 180, 0.5); /* Glow effect on hover */
-            transform: scale(1.05); /* Slight zoom effect */
+        @keyframes scrollImage {
+            0% {
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(-100%); /* Scroll to the second image */
+            }
+            100% {
+                transform: translateX(-200%); /* Loop back to the first image */
+            }
         }
 
         .social-icons {
@@ -142,13 +151,12 @@
 </head>
 <body>
     <div class="form-container">
-        <!-- Video Container -->
-        <div class="video-container">
-    <video class="video" autoplay loop controls>
-        <source src="images/vid.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
+        <div class="scrolling-image-container">
+            <div class="scrolling-images">
+                <img src="images/17.jpg" alt="Image 1" class="scrolling-image">
+                <img src="images/18.jpg" alt="Image 2" class="scrolling-image">
+            </div>
+        </div>
 
         <h2>Birthday Wishes</h2>
 
@@ -156,31 +164,16 @@
             <!-- Initial message -->
         </div>
 
-        <div class="controls">
-            <button class="control-btn" onclick="prevMessage()">Previous</button>
-            <button class="control-btn" onclick="nextMessage()">Next</button>
-        </div>
-
         <div class="social-icons">
             <span style="font-size: 14px; color: #555; font-weight: bold; margin-right: 10px;">Follow me:</span>
             <a href="https://t.me/@jbrtttttt" target="_blank">Telegram</a>
-            <a href="https://www.instagram.com/_gavstr?igsh=MWc5eW10OXQ5ajBybg==" target="_blank">Instagram</a>
+            <a href="https://www.instagram.com/_spuhnjbaab/profilecard/?igsh=MTE0N2l5d3hib3h0bA==" target="_blank">Instagram</a>
         </div>
     </div>
 
     <script>
         const messages = [
-            "First of many, happy happy birthday boi!! So imma start na, I may not tell you this even at some times but I'm really proud of what you've become.",
-            "I can really say na you really grow as a person because I see it for the last 10 months na I'm talking with you, I'm so proud of u.",
-            "Even though there are so many struggles and difficulties that came into your life this year, I want you to know na I'm really proud because u really face it with courage and overcome it.",
-            "I also want u to know na if you feel others don't like you, it's fine! I like you and everybody else does, what matters is somebody still likes you!",
-            "All I wish for you on your birthday is healing and happiness, and may those past won't affect you anymore.",
-            "May this year bring you joy that fills your heart, laughter that brightens your days, and peace that surrounds your every step.",
-            "As you continue your journey, remember that the world is better with you in it, and there are still countless amazing things awaiting you.",
-            "Always remember also na I'm always here, and if in some point we stop talking, don't hesitate to message me if you have problems, I'm always here for you.",
-            "Even though you won't be my end game (for now) char! I will still hold into my promise na no matter what I'm always here kasi you're already embedded in my soul.",
-            "Enjoy your day Sherene and may this upcoming year bring you a lot of happiness and positivity. Happy 17th my <33",
-            "-Andrei"
+            "first of many, happy happy birthday boi!! those pics pala sa taas are my fav pics of you and it it's u through the years HAHAHAHA so imma start na, i may not tell you this even at some times but I'm really proud of what you've become, and i can really say na you really grow as a person because i see it for the last 10 months na I'm talking with you, im so proud of u. even tho there are so many struggles and difficulties that came into your life this year, I want you to know na im really proud because u really face it with courage and overcome it. i also want u to know na if you feel others don't like you, it's fine! I like you and everybody else does, what matter is somebody still likes you! all i wish for you on your birthday is healing and happiness, and may those past won't affect you anymore, may this year bring you joy that fills your heart, laughter that brightens your days, and peace that surrounds your every step. As you continue your journey, remember that the world is better with you in it, and there are still countless amazing things awaiting you. always remember also na I'm always here, and if in some point we stop talking, don't hesitate to message me if you have problems, I'm always here for you. even tho you won't be my end game (for now) char! I will still hold into my promise na no matter what I'm always here kasi you're already embedded in my soul, enjoy your day sherene and may this upcoming years brings you a lot of happiness and positivity happy. 17th my <33\n\n-andrei"
         ];
 
         let index = 0;
@@ -188,16 +181,6 @@
         function updateMessage() {
             const messageContainer = document.getElementById('dynamicMessage');
             messageContainer.innerText = messages[index];
-        }
-
-        function nextMessage() {
-            index = (index + 1) % messages.length;
-            updateMessage();
-        }
-
-        function prevMessage() {
-            index = (index - 1 + messages.length) % messages.length;
-            updateMessage();
         }
 
         updateMessage();
