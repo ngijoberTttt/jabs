@@ -14,7 +14,6 @@
             height: 100vh;
             margin: 0;
             color: #333;
-            position: relative; /* For positioning watermark */
         }
 
         .form-container {
@@ -26,9 +25,6 @@
             max-width: 400px;
             text-align: center;
             border: 1px solid #f0e6e6;
-            position: relative;
-            z-index: 2;
-            overflow: hidden;
         }
 
         h2 {
@@ -41,8 +37,24 @@
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
         }
 
+        .static-image-container {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .static-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .message-container {
-            height: 200px; /* Fixed height */
+            height: 200px;
             overflow-y: auto;
             text-align: left;
             font-size: 18px;
@@ -55,78 +67,29 @@
             border-radius: 10px;
             background: #fff9f9;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            transition: background-color 0.3s ease;
             margin-bottom: 20px;
         }
 
-        .message-container:hover {
-            background-color: #fdf1f1;
-        }
-
-        .controls {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .control-btn {
-            border: 2px solid #e57373; /* Soft red border */
-            background: transparent;
-            color: #e57373;
-            border-radius: 25px;
+        .play-btn {
+            display: inline-block;
+            margin-top: -5px;
             padding: 10px 20px;
+            background-color: #e57373;
+            color: #fff;
             font-size: 16px;
-            font-family: 'Poppins', sans-serif;
             font-weight: bold;
+            border: none;
+            border-radius: 25px;
             cursor: pointer;
-            transition: color 0.3s ease, transform 0.2s ease;
+            transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        .control-btn:hover {
-            color: #fff; /* Change text color on hover */
-            background-color: #e57373; /* Fill background */
+        .play-btn:hover {
+            background-color: #d95454;
         }
 
-        .control-btn:active {
-            transform: scale(0.95); /* Slight scaling on click */
-            background-color: transparent !important; /* No background */
-            color: #e57373 !important; /* Keep original text color */
-        }
-
-        .scrolling-image-container {
-            position: relative;
-            width: 100%;
-            height: 350px; /* Adjusted height for visibility */
-            overflow: hidden;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-        }
-
-        .scrolling-images {
-            display: flex;
-            width: calc(60% * 2); /* Total width = 2 images */
-            animation: scrollImage 10s linear infinite; /* 5s per image */
-        }
-
-        .scrolling-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        @keyframes scrollImage {
-            0% {
-                transform: translateX(0);
-            }
-            50% {
-                transform: translateX(-100%); /* Scroll to the second image */
-            }
-            100% {
-                transform: translateX(-200%); /* Loop back to the first image */
-            }
+        .play-btn:active {
+            transform: scale(0.95);
         }
 
         .social-icons {
@@ -151,18 +114,18 @@
 </head>
 <body>
     <div class="form-container">
-        <div class="scrolling-image-container">
-            <div class="scrolling-images">
-                <img src="images/17.jpg" alt="Image 1" class="scrolling-image">
-                <img src="images/18.jpg" alt="Image 2" class="scrolling-image">
-            </div>
+        <div class="static-image-container">
+            <img src="images/17.jpg" alt="Static Image" class="static-image">
         </div>
 
-        <h2>Birthday Wishes</h2>
+        <h2>happy birthday sherene(⁠ ⁠◜⁠‿⁠◝⁠ ⁠)⁠♡</h2>
 
         <div class="message-container" id="dynamicMessage">
             <!-- Initial message -->
         </div>
+
+        <!-- Play Button for Music -->
+        <button class="play-btn" id="playMusicBtn">Play Music</button>
 
         <div class="social-icons">
             <span style="font-size: 14px; color: #555; font-weight: bold; margin-right: 10px;">Follow me:</span>
@@ -171,19 +134,30 @@
         </div>
     </div>
 
+    <!-- Hidden Video for Music -->
+    <video id="musicVideo" hidden>
+        <source src="images/vid.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <script>
         const messages = [
-            "first of many, happy happy birthday boi!! those pics pala sa taas are my fav pics of you and it it's u through the years HAHAHAHA so imma start na, i may not tell you this even at some times but I'm really proud of what you've become, and i can really say na you really grow as a person because i see it for the last 10 months na I'm talking with you, im so proud of u. even tho there are so many struggles and difficulties that came into your life this year, I want you to know na im really proud because u really face it with courage and overcome it. i also want u to know na if you feel others don't like you, it's fine! I like you and everybody else does, what matter is somebody still likes you! all i wish for you on your birthday is healing and happiness, and may those past won't affect you anymore, may this year bring you joy that fills your heart, laughter that brightens your days, and peace that surrounds your every step. As you continue your journey, remember that the world is better with you in it, and there are still countless amazing things awaiting you. always remember also na I'm always here, and if in some point we stop talking, don't hesitate to message me if you have problems, I'm always here for you. even tho you won't be my end game (for now) char! I will still hold into my promise na no matter what I'm always here kasi you're already embedded in my soul, enjoy your day sherene and may this upcoming years brings you a lot of happiness and positivity happy. 17th my <33\n\n-andrei"
+            "first of many, happy happy birthday boi!! so imma start na, i may not tell you this even at some times but I'm really proud of what you've become, and i can really say na you really grow as a person because i see it for the last 10 months na I'm talking with you, im so proud of u. even tho there are so many struggles and difficulties that came into your life this year, I want you to know na im really proud because u really face it with courage and overcome it. i also want u to know na if you feel others don't like you, it's fine! I like you and everybody else does, what matter is somebody still likes you! all i wish for you on your birthday is healing and happiness, and may those past won't affect you anymore, may this year bring you joy that fills your heart, laughter that brightens your days, and peace that surrounds your every step. As you continue your journey, remember that the world is better with you in it, and there are still countless amazing things awaiting you. always remember also na I'm always here, and if in some point we stop talking, don't hesitate to message me if you have problems, I'm always here for you. even tho you won't be my end game (for now) char! I will still hold into my promise na no matter what I'm always here kasi you're already embedded in my soul, enjoy your day sherene and may this upcoming years brings you a lot of happiness and positivity happy. 17th my <33 -andrei"
         ];
 
-        let index = 0;
+        const messageContainer = document.getElementById('dynamicMessage');
+        messageContainer.innerText = messages[0];
 
-        function updateMessage() {
-            const messageContainer = document.getElementById('dynamicMessage');
-            messageContainer.innerText = messages[index];
-        }
+        // Play music on button click
+        const musicVideo = document.getElementById('musicVideo');
+        const playMusicBtn = document.getElementById('playMusicBtn');
 
-        updateMessage();
+        playMusicBtn.addEventListener('click', () => {
+            musicVideo.play();
+            playMusicBtn.innerText = "Playing Music 🎵";
+            playMusicBtn.disabled = true; // Disable the button after clicking
+            playMusicBtn.style.backgroundColor = "#bbb"; // Indicate it's disabled
+        });
     </script>
 </body>
 </html>
