@@ -136,17 +136,17 @@
 
     <!-- Hidden Video for Music -->
     <video id="musicVideo" hidden>
-        <source src="images/vid.mp4" type="video/mp4">
+        <source src="images/vid2.mp4" type="video/mp4">
         Your browser does not support the video tag.
     </video>
 
     <script>
         const messages = [
-            "first of many, happy happy birthday boi!! so imma start na, i may not tell you this even at some times but I'm really proud of what you've become, and i can really say na you really grow as a person because i see it for the last 10 months na I'm talking with you, im so proud of u. even tho there are so many struggles and difficulties that came into your life this year, I want you to know na im really proud because u really face it with courage and overcome it. i also want u to know na if you feel others don't like you, it's fine! I like you and everybody else does, what matter is somebody still likes you! all i wish for you on your birthday is healing and happiness, and may those past won't affect you anymore, may this year bring you joy that fills your heart, laughter that brightens your days, and peace that surrounds your every step. As you continue your journey, remember that the world is better with you in it, and there are still countless amazing things awaiting you. always remember also na I'm always here, and if in some point we stop talking, don't hesitate to message me if you have problems, I'm always here for you. even tho you won't be my end game (for now) char! I will still hold into my promise na no matter what I'm always here kasi you're already embedded in my soul, enjoy your day sherene and may this upcoming years brings you a lot of happiness and positivity happy. 17th my <33 -andrei"
+            "first of many, happy happy birthday boi!! so imma start na, i may not tell you this even at some times but I'm really proud of what you've become, and i can really say na you really grow as a person because i see it for the last 10 months na I'm talking with you, im so proud of u. even tho there are so many struggles and difficulties that came into your life this year, I want you to know na im really proud because u really face it with courage and overcome it. i also want u to know na if you feel others don't like you, it's fine! I like you and everybody else does, what matter is somebody still likes you! all i wish for you on your birthday is healing and happiness, and may those past won't affect you anymore, may this year bring you joy that fills your heart, laughter that brightens your days, and peace that surrounds your every step. As you continue your journey, remember that the world is better with you in it, and there are still countless amazing things awaiting you. always remember also na I'm always here, and if in some point we stop talking, don't hesitate to message me if you have problems, I'm always here for you. even tho you won't be my end game (for now) char! I will still hold into my promise na no matter what I'm always here kasi you're already embedded in my soul, enjoy your day sherene and may this upcoming years brings you a lot of happiness and positivity happy 17th my <33<br><br>-andrei"
         ];
 
         const messageContainer = document.getElementById('dynamicMessage');
-        messageContainer.innerText = messages[0];
+        messageContainer.innerHTML = messages[0]; // Use innerHTML to render <br> tags as line breaks
 
         // Play music on button click
         const musicVideo = document.getElementById('musicVideo');
